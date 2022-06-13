@@ -1,0 +1,8 @@
+           <img onclick="myFunction()" src="/img/heskestad.jpg" class="dropbtn" alt="">
+
+           <button onclick="myFunction()" class="dropbtn">dropdown</button>
+
+
+           
+
+<img onclick="myFunction2()" src="/img/bøyum.jpg" class="dropbtn" alt="">
