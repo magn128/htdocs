@@ -5,7 +5,7 @@
 
 <?php
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-// Username is root
+// brukernavnet er root
 $user = 'root';
 $password = '';
  
@@ -29,55 +29,29 @@ $sql = " SELECT * FROM ansatte ORDER BY id";
 $result = $mysqli->query($sql);
 $mysqli->close();
 ?>
-<!-- HTML code to display data in tabular format -->
+<!-- HTML code -->
 <!DOCTYPE html> 
-rus
+
 <html lang="en">
  
 <head>
     <meta charset="UTF-8">
     <title>GFG User Details</title>
-    <!-- CSS FOR STYLING THE PAGE -->
-    <style>
-        table {
-            margin: 0 auto;
-            font-size: large;
-            border: 1px solid black;
-        }
- 
-        h1 {
-            text-align: center;
-            color: #006600;
-            font-size: xx-large;
-            font-family: 'Gill Sans', 'Gill Sans MT',
-            ' Calibri', 'Trebuchet MS', 'sans-serif';
-        }
- 
-        td {
-            background-color: #E4F5D4;
-            border: 1px solid black;
-        }
- 
-        th,
-        td {
-            font-weight: bold;
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-        }
- 
-        td {
-            font-weight: lighter;
-        }
-    </style>
+    <!-- Link til css -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
  
 <body>
+  <div id="innhold">
     <section>
+      <div id="top">
         <h1>Ansatte</h1>
-        <!-- TABLE CONSTRUCTION -->
+        </div>
+        <!-- ansatte liste -->
+        <div id="ansatt">
         <table>
             <tr>
+                <th>Bilde</th>
                 <th>Navn</th>
                 <th>Mobil</th>
                 <th>Jobb</th>
@@ -85,15 +59,16 @@ rus
                 <th>Stilling</th>
                 <th>Avdeling</th>
             </tr>
-            <!-- PHP CODE TO FETCH DATA FROM ROWS -->
+            <!-- php kode for å hent data til radene -->
             <?php
-                // LOOP TILL END OF DATA
+                // loop som kjører til slutten av
                 while($rows=$result->fetch_assoc())
                 {
             ?>
             <tr>
-                <!-- FETCHING DATA FROM EACH
-                    ROW OF EVERY COLUMN -->
+                <!-- henter data fra hver rad -->
+                
+                <td><img src="img/heskestad.jpg" alt=""></td>
                 <td><?php echo $rows['Navn'];?></td>
                 <td><?php echo $rows['Mobil'];?></td>
                 <td><?php echo $rows['Jobb'];?></td>
@@ -105,6 +80,10 @@ rus
                 }
             ?>
         </table>
+        </div>
     </section>
+    </div>
+
+ 
 </body>
 </html>
