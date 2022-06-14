@@ -1,10 +1,23 @@
+
 <?php
-    $hName='localhost'; // host name
-    $uName='root';   // database user name
-    $password='';   // database password
-    $dbName = "my_db"; // database name
-    $dbCon = mysqli_connect($hName,$uName,$password,"$dbName");
-      if(!$dbCon){
-          die('Could not Connect MySql Server:' .mysql_error());
-      }
+// brukernavnet er root
+$user = 'root';
+$password = '';
+ 
+
+$database = '13.06utviklingsoppgave';
+ 
+// Server er på localhost
+
+$servername='localhost';
+$mysqli = new mysqli($servername, $user,
+                $password, $database);
+// Ser etter tilkoblinger
+if ($mysqli->connect_error) {
+    die('Connect Error (' .
+    $mysqli->connect_errno . ') '.
+    $mysqli->connect_error);
+}
+
+
 ?>

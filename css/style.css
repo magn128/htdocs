@@ -1,3 +1,6 @@
+body{
+    display: flex
+}
 table {
     margin: 0 auto;
     font-size: large;
@@ -27,4 +30,9 @@ td {
 
 td {
     font-weight: lighter;
+}
+
+.row {
+    display: flex;
+    align-items: center;
 }
