@@ -44,6 +44,7 @@ $result = $mysqli->query($sql);
                     <th>Stilling</th>
                     <th>Avdeling</th>
                     <th>ID</th>
+                 
                 </tr>
                 <!-- php kode for å hent data til radene -->
                 <?php
@@ -65,6 +66,7 @@ $result = $mysqli->query($sql);
                     <td><?php echo $rows['Stilling'];?></td>
                     <td><?php echo $rows['Avdeling'];?></td>
                     <td><?php echo $rows['id'];?></td>
+                   
                    
                   
                 </tr>

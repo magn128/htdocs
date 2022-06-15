@@ -1,55 +1,49 @@
-
-  <?php
-    include 'conn.php';
-        if(isset($_POST["endre"])) {
-
-            $id = htmlspecialchars($_POST["id"]);
-            $ansatt_navn = htmlspecialchars($_POST["Navn"]);
-            $mobil = htmlspecialchars($_POST["Mobil"]);
-            $jobb = htmlspecialchars($_POST["Jobb"]);
-            $epost = htmlspecialchars($_POST["Epost"]);
-            $stilling = htmlspecialchars($_POST["Stilling"]);
-            $avdeling = htmlspecialchars($_POST["Avdeling"]);
-            
-
-
-         $sql1 = "UPDATE ansatte SET Navn, Mobil, Jobb, Epost, Stilling, Avdeling WHERE id VALUES ('$id', '$ansatt_navn', '$mobil', '$jobb', '$epost', '$stilling', '$avdeling')";
-       
-        }  ?>
-
-   <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <!-- Link til css -->
-    <link rel="stylesheet" href="css/style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+<body>
+  <h1>oppdater data</h1>
 
-<form action ="index.php">
-                <input type="submit" value="Tilbake" />
-                </form>
-    <div class="row">
-    <H1>Rediger info</H1>
-    
-
-
-                   <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
-
-                
-                  
-                        <input type="number" name="id" placeholder="ID">
-                        <input type="text" name="Navn" placeholder="Navn" >
-                        <input type="number" name="Mobil" placeholder="Mobil"  >
-                        <input type="number" name="Jobb" placeholder="Jobb"  >
-                        <input type="email" name="Epost" placeholder="Epost"  >
-                        <input type="text" name="Stilling" placeholder="Stilling"  >
-                        <input type="text" name="Avdeling" placeholder="Avdeling"  >
+                        <input type="text" name="id" placeholder="ID">
                         
                         
                         
                         
                        
-                        <button type="submit"  name="endre">Endre</button>
+                       <input type="submit" name="oppdater" value="UPDATE DATA">
 
-                </div>
-                
-            </div>
+
+
+
+</body>
+</html>
+
+
+<?php
+
+$conn = mysqli_connect("localhost","root","");
+$db = mysqli_select_db($conn, '13.06utviklingsoppgave');
+
+if(isset($_POST['oppdater']))
+{
+  $id = $_POST['id'];
+
+  $query = "DELETE FROM ansatte WHERE id='$_POST[id]'";
+  $query_run = mysqli_query($conn,$query);
+
+  if($query_run)
+  {
+    echo '<script type="text/javascript"> alert("Oppdatert") </script>';
+
+  }
+  else
+  {
+    echo '<script type="text/javascript"> alert("ikke Oppdatert") </script>';
+  }
+
+}
