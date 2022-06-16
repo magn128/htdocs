@@ -37,7 +37,8 @@ $result = $mysqli->query($sql);
             <table>
                 <tr>
                     <th>Bilde</th>
-                    <th>Navn</th>
+                    <th>Foravn</th>
+                    <th>Etternavn</th>
                     <th>Mobil</th>
                     <th>Jobb</th>
                     <th>E-post</th>
@@ -48,10 +49,18 @@ $result = $mysqli->query($sql);
                 </tr>
                 <!-- php kode for å hent data til radene -->
                 <?php
-                    // loop som kjører til slutten av
+                    // loop som kjører til slutten av raden
                     while($rows=$result->fetch_assoc())
                     {
                         $bilde = $rows ['bilde'];
+                        $fornavn = $rows['Fnavn'];
+                        $etternavn = $rows['Enavn'];
+                        $mobil = $rows['Mobil'];
+                        $jobbtelefon = $rows['Jobb'];
+                        $epost = $rows['Epost'];
+                        $avdeling = $rows['Avdeling']; 
+                        $brukerid = $rows['id'];
+                        $stilling = $rows['Stilling'];
 
                        
                 ?>
@@ -59,7 +68,8 @@ $result = $mysqli->query($sql);
                     <!-- henter data fra hver rad -->
                     
                     <td><?php echo "<img src=\"$bilde\" width=\"100px\" height=\"100px\">";?></td>
-                    <td><?php echo $rows['Navn'];?></td>
+                    <td><?php echo $rows['Fnavn'];?></td>
+                    <td><?php echo $rows['Enavn'];?></td>
                     <td><?php echo $rows['Mobil'];?></td>
                     <td><?php echo $rows['Jobb'];?></td>
                     <td><?php echo $rows['Epost'];?></td>
@@ -74,15 +84,20 @@ $result = $mysqli->query($sql);
                     }
                 ?>
             </table>
+           
             </div>
         </section>
         <div>
             <form action ="add.php">
                 <input type="submit" value="legg til nye ansatte" />
                 </form>
-                <form action ="change.php">
-                <input type="submit" value="endre info om ansatte" />
-                </form>
+               
+                <h1>Slett Ansatt</h1> <!-- Sletter ansatte -->
+            <form action="/Del.php" method="get"> 
+            <label for="id">Brukerid:</label>
+            <input type="text"  name="id" required><br> 
+            <input type="submit" value="Slett ansatt">
+            </form>
        
        
         

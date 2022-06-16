@@ -1,15 +1,17 @@
 <?php
 include 'conn.php';
-if(isset($_POST["submit"])) {
-        $ansatt_navn = htmlspecialchars($_POST["Navn"]);
+if(isset($_POST["submit"])) { //submit loop
+        $fnavn = htmlspecialchars($_POST["Fnavn"]);
+        $enavn = htmlspecialchars($_POST["Enavn"]);
         $mobil = htmlspecialchars($_POST["Mobil"]);
         $jobb = htmlspecialchars($_POST["Jobb"]);
         $epost = htmlspecialchars($_POST["Epost"]);
         $stilling = htmlspecialchars($_POST["Stilling"]);
         $avdeling = htmlspecialchars($_POST["Avdeling"]);
+        $bilde = $_POST["img/$enavn.jpg"];
     
     
-        $sql = "INSERT INTO ansatte (Navn, Mobil, Jobb, Epost, Stilling, Avdeling) VALUES ('$ansatt_navn', '$mobil', '$jobb', '$epost', '$stilling', '$avdeling')";
+        $sql = "INSERT INTO ansatte (Fnavn, Enavn,  Mobil, Jobb, Epost, Stilling, Avdeling, bilde) VALUES ('$fnavn', '$enavn', '$mobil', '$jobb', '$epost', '$stilling', '$avdeling', '$bilde')";
         if(mysqli_query($mysqli, $sql)) {
             // success case
             header('Location: index.php');
@@ -35,12 +37,13 @@ if(isset($_POST["submit"])) {
                     <H1>legg til ny ansatt</H1>
                     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
                        
-                        <input type="text" name="Navn" placeholder="Navn">
-                        <input type="number" name="Mobil" placeholder="Mobil" >
-                        <input type="number" name="Jobb" placeholder="Jobb" >
-                        <input type="email" name="Epost" placeholder="Epost" >
-                        <input type="text" name="Stilling" placeholder="Stilling" >
-                        <input type="text" name="Avdeling" placeholder="Avdeling"  >
+                        <input type="text" name="Fnavn" placeholder="Fornavn" required><br>
+                        <input type="text" name="Enavn" placeholder="Etternavn" required><br>
+                        <input type="number" name="Mobil" placeholder="Mobil" required><br>
+                        <input type="number" name="Jobb" placeholder="Jobb" required><br>
+                        <input type="email" name="Epost" placeholder="Epost" required><br>
+                        <input type="text" name="Stilling" placeholder="Stilling" required><br>
+                        <input type="text" name="Avdeling" placeholder="Avdeling" required><br>
                         
                         
                        
